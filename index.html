@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <base href="./">
+    <!-- 安卓终极适配指纹(新L6)：绝对路径+预加载双保险，彻底绕开微信/x5相对路径bug -->
+    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/avatar.jpg">
+    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/selfie1.jpg">
+    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/selfie2.jpg">
+    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/selfie3.jpg">
+    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/selfie4.jpg">
+    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/douyin.jpg">
     <title>王宫茗 · 个人简历</title>
     <meta name="description" content="王宫茗 · 个人简历 · 南方医科大学准大一新生">
     <meta name="theme-color" content="#FFFDF0">
@@ -602,17 +608,23 @@
             cursor: zoom-in;
             transition: all var(--transition-slow);
             position: relative;
+            aspect-ratio: 3/4;
+            min-height: 120px;
+            display: block;
         }
         .bottom-photo img {
             width: 100%;
+            height: 100%;
             aspect-ratio: 1;
             object-fit: cover;
             display: block;
+            min-width: 100%;
+            min-height: 100%;
         }
-        .bottom-photo:nth-child(1) { transform: rotate(-4deg); }
-        .bottom-photo:nth-child(2) { transform: rotate(3deg) translateY(-4px); }
-        .bottom-photo:nth-child(3) { transform: rotate(-2deg); }
-        .bottom-photo:nth-child(4) { transform: rotate(2deg) translateY(-2px); }
+        .bottom-photo:nth-child(1) { transform: rotate(-4deg); background: var(--pink); }
+        .bottom-photo:nth-child(2) { transform: rotate(3deg) translateY(-4px); background: var(--mint); }
+        .bottom-photo:nth-child(3) { transform: rotate(-2deg); background: var(--yellow); }
+        .bottom-photo:nth-child(4) { transform: rotate(2deg) translateY(-2px); background: var(--blue); }
         .bottom-photo:hover {
             z-index: 10;
             box-shadow: 5px 5px 0 0 var(--ink);
@@ -2315,7 +2327,7 @@
     <nav class="navbar" aria-label="主导航">
         <div class="nav-inner">
             <span class="nav-brand">
-                <img src="./avatar.jpg" alt="头像" class="nav-avatar" id="navAvatar"
+                <img src="https://mifengshuiyitian.github.io/resume/avatar.jpg" alt="头像" class="nav-avatar" id="navAvatar"
                      onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=\'nav-avatar-fallback\'>王</div>')">
                 <span>王宫茗</span>
             </span>
@@ -2343,22 +2355,22 @@
             <span class="hero-star s2">●</span>
             <div class="hero-inner">
                 <div class="hero-photo" id="heroPhoto">
-                    <img src="./avatar.jpg" alt="个人照片" id="heroPhotoImg"
+                    <img src="https://mifengshuiyitian.github.io/resume/avatar.jpg" alt="个人照片" id="heroPhotoImg"
                          onerror="this.parentElement.innerHTML='<div class=\'hero-photo-fallback\'>王</div>'">
                 </div>
                 <div class="hero-content">
                     <div class="hero-bottom-photos">
-                        <div class="bottom-photo" data-src="./selfie1.jpg">
-                            <img src="./selfie1.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--pink);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                        <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie1.jpg">
+                            <img src="https://mifengshuiyitian.github.io/resume/selfie1.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--pink);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
-                        <div class="bottom-photo" data-src="./selfie2.jpg">
-                            <img src="./selfie2.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                        <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie2.jpg">
+                            <img src="https://mifengshuiyitian.github.io/resume/selfie2.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
-                        <div class="bottom-photo" data-src="./selfie3.jpg">
-                            <img src="./selfie3.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--yellow);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                        <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie3.jpg">
+                            <img src="https://mifengshuiyitian.github.io/resume/selfie3.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--yellow);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
-                        <div class="bottom-photo" data-src="./selfie4.jpg">
-                            <img src="./selfie4.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                        <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie4.jpg">
+                            <img src="https://mifengshuiyitian.github.io/resume/selfie4.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                     </div>
                     <div class="hero-name-block">
@@ -2387,7 +2399,7 @@
                     <div class="hero-social">
                         <span class="social-tag douyin-clickable" id="douyinTag" role="button" tabindex="0"
                               aria-label="查看抖音账号二维码">
-                            <img src="./douyin.jpg" alt="抖音账号二维码" style="cursor:zoom-in" onerror="this.outerHTML='<div style=\'aspect-ratio:1/1;background:var(--pink);border:3px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;text-align:center;padding:10px\'>抖音二维码</div>'">
+                            <img src="https://mifengshuiyitian.github.io/resume/douyin.jpg" alt="抖音账号二维码" style="cursor:zoom-in" onerror="this.outerHTML='<div style=\'aspect-ratio:1/1;background:var(--pink);border:3px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;text-align:center;padding:10px\'>抖音二维码</div>'">
                             抖音：<span id="douyinId" class="reveal-on-click">点击查看</span>
                         </span>
                         <span class="social-tag">💬 微信/QQ：<span id="socialIm" class="reveal-on-click">点击查看</span></span>
@@ -3158,7 +3170,7 @@
                 if (!grid) return;
                 const photos = [];
                 for (let i = 5; i <= 18; i++) {
-                    photos.push('./photo' + i + '.jpg');
+                    photos.push('https://mifengshuiyitian.github.io/resume/photo' + i + '.jpg');
                 }
                 const bigIndices = [0, 4, 9];
                 grid.innerHTML = photos.map((src, i) => {
@@ -3177,39 +3189,4 @@
                 renderProjects();
                 renderSkills();
                 renderEduCert();
-                renderSelfEval();
-                renderTravel();
-                setupBackTop();
-                setupPrint();
-                setupNavScroll();
-                setupScrollReveal();
-                setupCountUp();
-                setupMouseParallax();
-                setupTiltCards();
-                setupMagnetic();
-                setupProgressBar();
-                setupLightbox();
-                renderContact();
-                $('#copyEmailBtn').addEventListener('click', copyEmail);
-
-                const skillFills = $$('.skill-bar-fill');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const el = entry.target;
-                            const lvl = el.dataset.level;
-                            el.style.width = '0%';
-                            setTimeout(() => { el.style.width = lvl + '%'; }, 50);
-                            observer.unobserve(el);
-                        }
-                    });
-                }, { threshold: 0.3 });
-                skillFills.forEach(f => observer.observe(f));
-            }
-
-            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-            else init();
-        })();
-</script>
-</body>
-</html>
+   
