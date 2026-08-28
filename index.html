@@ -21,6 +21,7 @@
            ============================================================ */
 
         :root {
+            color-scheme: light only; /* 强制浅色方案，防止 iOS 深色模式反向覆盖米黄配色 */
             --bg: #FFFDF0;
             --bg-soft: #FFF9E0;
             --ink: #1a1a1a;
@@ -1829,6 +1830,19 @@
             .tab-list { display: none; }
             .name-brutal { -webkit-text-stroke: 0; text-shadow: none; }
             .reveal, .reveal-stagger > *, .reveal-left, .reveal-right, .reveal-scale, .reveal-clip { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+        }
+
+        /* 强制浅色：防止 iOS / 安卓浏览器开启深色模式时反色覆盖米黄Neo-Brutalism配色 */
+        @media (prefers-color-scheme: dark) {
+            :root { color-scheme: light only; }
+            html, body, .section, .card, .skill-inner-fill, .strip-bar, .strip-item, .tab-card,
+            .navbar, .lightbox-content, .toast, .icon-btn, .tooltip, .marquee-strip,
+            .badge, .nav-links a, .accordion-item, .accordion-trigger, .mag-btn, .print-btn,
+            .side-card, .data-row, .tag, .sticker {
+                filter: none !important;
+                mix-blend-mode: normal !important;
+            }
+            html { background: #FFFDF0; color: #1a1a1a; }
         }
 
         @media (prefers-reduced-motion: reduce) {
