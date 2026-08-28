@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <base href="./">
     <title>王宫茗 · 个人简历</title>
     <meta name="description" content="王宫茗 · 个人简历 · 南方医科大学准大一新生">
     <meta name="theme-color" content="#FFFDF0">
@@ -64,7 +65,17 @@
         }
         /* 移动端：fixed 背景会导致 iOS 重绘掉帧，改为滚动（视觉几乎无差） */
         @media (max-width: 768px) {
-            body { background-attachment: scroll; }
+            body { background-attachment: scroll; padding-top: calc(68px + env(safe-area-inset-top)) !important; }
+            /* 移动端禁用所有 transform 类动画（消除"标题跟随移动"的漂移感） */
+            .navbar { position: fixed !important; top: env(safe-area-inset-top, 0px) !important; transition: none !important; box-shadow: 0 4px 0 0 var(--ink) !important; }
+            .reveal, .reveal.reveal-in, .tilt-card, .hero-inner *, .float-deco {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+                animation: none !important;
+                will-change: unset !important;
+            }
+            .marquee-track { animation-duration: 60s !important; } /* 跑马灯大幅减速，不让用户感觉标题/内容"在跟随手指跑" */
         }
         @supports (padding: max(0px)) {
             body { padding-top: max(76px, env(safe-area-inset-top)); }
@@ -302,13 +313,16 @@
             top: env(safe-area-inset-top, 0px);
             left: 0;
             right: 0;
-            z-index: 1000;
+            width: 100%;
+            z-index: 9999;
             background: rgba(255, 253, 240, 0.92);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: var(--border-thick);
             box-shadow: 0 4px 0 0 var(--ink);
             transition: all var(--transition);
+            transform: none !important;
+            will-change: unset !important;
         }
         .navbar.scrolled {
             box-shadow: 0 6px 0 0 var(--ink), 0 8px 24px rgba(0,0,0,0.08);
@@ -2301,7 +2315,7 @@
     <nav class="navbar" aria-label="主导航">
         <div class="nav-inner">
             <span class="nav-brand">
-                <img src="avatar.jpg" alt="头像" class="nav-avatar" id="navAvatar"
+                <img src="./avatar.jpg" alt="头像" class="nav-avatar" id="navAvatar"
                      onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=\'nav-avatar-fallback\'>王</div>')">
                 <span>王宫茗</span>
             </span>
@@ -2329,22 +2343,22 @@
             <span class="hero-star s2">●</span>
             <div class="hero-inner">
                 <div class="hero-photo" id="heroPhoto">
-                    <img src="avatar.jpg" alt="个人照片" id="heroPhotoImg"
+                    <img src="./avatar.jpg" alt="个人照片" id="heroPhotoImg"
                          onerror="this.parentElement.innerHTML='<div class=\'hero-photo-fallback\'>王</div>'">
                 </div>
                 <div class="hero-content">
                     <div class="hero-bottom-photos">
-                        <div class="bottom-photo" data-src="selfie1.jpg">
-                            <img src="selfie1.jpg" alt="自拍" loading="lazy" onerror="this.parentElement.style.display='none'">
+                        <div class="bottom-photo" data-src="./selfie1.jpg">
+                            <img src="./selfie1.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--pink);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
-                        <div class="bottom-photo" data-src="selfie2.jpg">
-                            <img src="selfie2.jpg" alt="自拍" loading="lazy" onerror="this.parentElement.style.display='none'">
+                        <div class="bottom-photo" data-src="./selfie2.jpg">
+                            <img src="./selfie2.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
-                        <div class="bottom-photo" data-src="selfie3.jpg">
-                            <img src="selfie3.jpg" alt="自拍" loading="lazy" onerror="this.parentElement.style.display='none'">
+                        <div class="bottom-photo" data-src="./selfie3.jpg">
+                            <img src="./selfie3.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--yellow);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
-                        <div class="bottom-photo" data-src="selfie4.jpg">
-                            <img src="selfie4.jpg" alt="自拍" loading="lazy" onerror="this.parentElement.style.display='none'">
+                        <div class="bottom-photo" data-src="./selfie4.jpg">
+                            <img src="./selfie4.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                     </div>
                     <div class="hero-name-block">
@@ -2373,7 +2387,7 @@
                     <div class="hero-social">
                         <span class="social-tag douyin-clickable" id="douyinTag" role="button" tabindex="0"
                               aria-label="查看抖音账号二维码">
-                            <img src="douyin.jpg" alt="抖音账号二维码" style="cursor:zoom-in" onerror="this.remove();">
+                            <img src="./douyin.jpg" alt="抖音账号二维码" style="cursor:zoom-in" onerror="this.outerHTML='<div style=\'aspect-ratio:1/1;background:var(--pink);border:3px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;text-align:center;padding:10px\'>抖音二维码</div>'">
                             抖音：<span id="douyinId" class="reveal-on-click">点击查看</span>
                         </span>
                         <span class="social-tag">💬 微信/QQ：<span id="socialIm" class="reveal-on-click">点击查看</span></span>
@@ -3144,7 +3158,7 @@
                 if (!grid) return;
                 const photos = [];
                 for (let i = 5; i <= 18; i++) {
-                    photos.push('photo' + i + '.jpg');
+                    photos.push('./photo' + i + '.jpg');
                 }
                 const bigIndices = [0, 4, 9];
                 grid.innerHTML = photos.map((src, i) => {
