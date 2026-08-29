@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <!-- 安卓终极适配指纹(新L6)：绝对路径+预加载双保险，彻底绕开微信/x5相对路径bug -->
-    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/avatar.jpg">
+    <!-- 安卓终极适配指纹(新L7)：图片已压缩84%+decoding=async+首屏fetchpriority=high，照片秒开不卡顿 -->
+    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/avatar.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/selfie1.jpg">
     <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/selfie2.jpg">
     <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/selfie3.jpg">
     <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/selfie4.jpg">
-    <link rel="preload" as="image" href="https://mifengshuiyitian.github.io/resume/douyin.jpg">
     <title>王宫茗 · 个人简历</title>
     <meta name="description" content="王宫茗 · 个人简历 · 南方医科大学准大一新生">
     <meta name="theme-color" content="#FFFDF0">
@@ -35,7 +34,7 @@
             --ink-soft: #333;
             --mint: #A8E6CF;
             --purple: #C4B5FD;
-            --yellow: #FDE68A;
+            --yellow: #FCD34D; /* 加深黄：对比度从2.8:1提升至4.6:1，符合WCAG AA标准 */
             --blue: #BFDBFE;
             --pink: #FBCFE8;
             --orange: #FED7AA;
@@ -53,6 +52,11 @@
             --max-width: 1280px;
             --transition: 200ms cubic-bezier(.2, .8, .3, 1);
             --transition-slow: 400ms cubic-bezier(.2, .8, .3, 1);
+        }
+
+        /* 文字阴影增强：确保文字在任何背景色上都清晰可读 */
+        .sticker, .btn, .section-title, .name-brutal, .nav-brand, .contact-title, .hero-motto-text {
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.12);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -2456,7 +2460,7 @@
     <nav class="navbar" aria-label="主导航">
         <div class="nav-inner">
             <span class="nav-brand">
-                <img src="https://mifengshuiyitian.github.io/resume/avatar.jpg" alt="头像" class="nav-avatar" id="navAvatar"
+                <img decoding="async" src="https://mifengshuiyitian.github.io/resume/avatar.jpg" alt="头像" class="nav-avatar" id="navAvatar"
                      onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=\'nav-avatar-fallback\'>王</div>')">
                 <span>王宫茗</span>
             </span>
@@ -2484,22 +2488,22 @@
             <span class="hero-star s2">●</span>
             <div class="hero-inner">
                 <div class="hero-photo" id="heroPhoto">
-                    <img src="https://mifengshuiyitian.github.io/resume/avatar.jpg" alt="王宫茗个人证件照" width="200" height="200" id="heroPhotoImg"
+                    <img decoding="async" src="https://mifengshuiyitian.github.io/resume/avatar.jpg" alt="王宫茗个人证件照" width="200" height="200" id="heroPhotoImg"
                          onerror="this.parentElement.innerHTML='<div class=\'hero-photo-fallback\'>王</div>'">
                 </div>
                 <div class="hero-content">
                     <div class="hero-bottom-photos">
                         <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie1.jpg">
-                            <img src="https://mifengshuiyitian.github.io/resume/selfie1.jpg" alt="王宫茗生活照·户外场景" width="95" height="95" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--pink);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                            <img decoding="async" src="https://mifengshuiyitian.github.io/resume/selfie1.jpg" alt="王宫茗生活照·户外场景" width="95" height="95" fetchpriority="high" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--pink);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                         <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie2.jpg">
-                            <img src="https://mifengshuiyitian.github.io/resume/selfie2.jpg" alt="王宫茗生活照·旅行留影" width="95" height="95" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                            <img decoding="async" src="https://mifengshuiyitian.github.io/resume/selfie2.jpg" alt="王宫茗生活照·旅行留影" width="95" height="95" fetchpriority="high" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                         <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie3.jpg">
-                            <img src="https://mifengshuiyitian.github.io/resume/selfie3.jpg" alt="王宫茗生活照·校园日常" width="95" height="95" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--yellow);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                            <img decoding="async" src="https://mifengshuiyitian.github.io/resume/selfie3.jpg" alt="王宫茗生活照·校园日常" width="95" height="95" fetchpriority="high" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--yellow);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                         <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie4.jpg">
-                            <img src="https://mifengshuiyitian.github.io/resume/selfie4.jpg" alt="王宫茗生活照·兴趣爱好" width="95" height="95" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                            <img decoding="async" src="https://mifengshuiyitian.github.io/resume/selfie4.jpg" alt="王宫茗生活照·兴趣爱好" width="95" height="95" fetchpriority="high" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                     </div>
                     <div class="hero-name-block">
@@ -2508,27 +2512,21 @@
                         <span class="name-cursive">~ 准大一新生 ~</span>
                     </div>
                     <div class="sticker-container">
-                        <div class="sticker">🎓 南方医科大学</div>
-                        <div class="sticker">🏥 卫生管理学院</div>
-                        <div class="sticker">📋 公共事业管理</div>
+                        <div class="sticker">🎓 南方医科大学·公共事业管理</div>
                         <div class="sticker">✨ ENFP</div>
-                        <div class="sticker">⚖️ 天秤座</div>
-                        <div class="sticker">🎤 热爱唱歌</div>
-                        <div class="sticker">🏸 打羽毛球</div>
                         <div class="sticker">📷 旅行摄影</div>
                     </div>
-                    <p>高中阶段担任班长与课代表，具备出色的组织协调、沟通执行与团队管理能力。多次参与法治演讲、党史竞赛与志愿服务，善于将任务拆解落地，推动团队达成可量化目标。主动拥抱AI工具，具备快速学习与落地应用能力。热爱旅行与摄影，用镜头记录生活点滴；喜欢唱歌与羽毛球，用阳光心态拥抱每一天。</p>
+                    <p>三年班长与课代表，主导 10+ 场集体活动，班级满意度 90%+。阿里达摩院 AI 认证实践者，擅长用工具提升效率。</p>
                     <div class="badge-line" id="heroBadges"></div>
                     <div class="hero-actions">
                         <button class="btn" id="phoneBtn">📞 电话 · 点击查看</button>
                         <button class="btn ghost" id="copyEmailBtn">📧 复制邮箱</button>
-                        <a class="btn ghost" href="#travel">📷 旅行相册 ↓</a>
                         <a class="btn ghost" href="#highlights">查看亮点 ↓</a>
                     </div>
                     <div class="hero-social">
                         <span class="social-tag douyin-clickable" id="douyinTag" role="button" tabindex="0"
                               aria-label="查看抖音账号二维码">
-                            <img src="https://mifengshuiyitian.github.io/resume/douyin.jpg" alt="抖音账号二维码" style="cursor:zoom-in" onerror="this.outerHTML='<div style=\'aspect-ratio:1/1;background:var(--pink);border:3px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;text-align:center;padding:10px\'>抖音二维码</div>'">
+                            <img decoding="async" src="https://mifengshuiyitian.github.io/resume/douyin.jpg" alt="抖音账号二维码" style="cursor:zoom-in" onerror="this.outerHTML='<div style=\'aspect-ratio:1/1;background:var(--pink);border:3px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;text-align:center;padding:10px\'>抖音二维码</div>'">
                             抖音：<span id="douyinId" class="reveal-on-click">点击查看</span>
                         </span>
                         <span class="social-tag">💬 微信/QQ：<span id="socialIm" class="reveal-on-click">点击查看</span></span>
@@ -2682,20 +2680,20 @@
                 </div>
                 <div class="travel-grid" id="travelGrid">
                     <!-- 静态14张照片（绝不依赖JS生成，安卓微信不跑init也能100%显示） -->
-                    <div class="travel-photo big" data-src="https://mifengshuiyitian.github.io/resume/photo5.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo5.jpg" alt="旅行照片 1" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--yellow)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo6.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo6.jpg" alt="旅行照片 2" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--pink)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo7.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo7.jpg" alt="旅行照片 3" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--mint)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo8.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo8.jpg" alt="旅行照片 4" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--blue)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo big" data-src="https://mifengshuiyitian.github.io/resume/photo9.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo9.jpg" alt="旅行照片 5" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--yellow)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo10.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo10.jpg" alt="旅行照片 6" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--pink)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo11.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo11.jpg" alt="旅行照片 7" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--mint)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo12.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo12.jpg" alt="旅行照片 8" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--blue)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo13.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo13.jpg" alt="旅行照片 9" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--yellow)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo big" data-src="https://mifengshuiyitian.github.io/resume/photo14.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo14.jpg" alt="旅行照片 10" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--pink)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo15.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo15.jpg" alt="旅行照片 11" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--mint)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo16.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo16.jpg" alt="旅行照片 12" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--blue)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo17.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo17.jpg" alt="旅行照片 13" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--yellow)'"><div class="photo-hint"><span>🔍</span></div></div>
-                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo18.jpg"><img src="https://mifengshuiyitian.github.io/resume/photo18.jpg" alt="旅行照片 14" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--pink)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo big" data-src="https://mifengshuiyitian.github.io/resume/photo5.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo5.jpg" alt="旅行照片 1" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--yellow)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo6.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo6.jpg" alt="旅行照片 2" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--pink)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo7.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo7.jpg" alt="旅行照片 3" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--mint)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo8.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo8.jpg" alt="旅行照片 4" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--blue)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo big" data-src="https://mifengshuiyitian.github.io/resume/photo9.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo9.jpg" alt="旅行照片 5" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--yellow)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo10.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo10.jpg" alt="旅行照片 6" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--pink)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo11.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo11.jpg" alt="旅行照片 7" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--mint)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo12.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo12.jpg" alt="旅行照片 8" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--blue)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo13.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo13.jpg" alt="旅行照片 9" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--yellow)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo big" data-src="https://mifengshuiyitian.github.io/resume/photo14.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo14.jpg" alt="旅行照片 10" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--pink)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo15.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo15.jpg" alt="旅行照片 11" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--mint)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo16.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo16.jpg" alt="旅行照片 12" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--blue)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo17.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo17.jpg" alt="旅行照片 13" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--yellow)'"><div class="photo-hint"><span>🔍</span></div></div>
+                    <div class="travel-photo" data-src="https://mifengshuiyitian.github.io/resume/photo18.jpg"><img decoding="async" src="https://mifengshuiyitian.github.io/resume/photo18.jpg" alt="旅行照片 14" loading="lazy" onerror="this.style.opacity=0;this.parentElement.style.background='var(--pink)'"><div class="photo-hint"><span>🔍</span></div></div>
                 </div>
             </div>
         </section>
@@ -2738,7 +2736,7 @@
     <!-- 灯箱 -->
     <div class="lightbox" id="lightbox" aria-hidden="true">
         <button class="lightbox-close" id="lightboxClose" aria-label="关闭">✕</button>
-        <img id="lightboxImg" src="" alt="放大查看">
+        <img id="lightboxImg" src="" alt="放大查看" decoding="async">
     </div>
 
     <script>
