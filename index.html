@@ -1867,6 +1867,85 @@
         .section:nth-of-type(6) { animation-delay: 300ms; }
         .section:nth-of-type(7) { animation-delay: 360ms; }
 
+        /* ========== 动感增强包（全部纯CSS：keyframes自动播或:hover触发，零JS依赖，安卓微信100%安全） ========== */
+        /* 1. 名字呼吸光晕：让"王宫茗"一直有存在感 */
+        @keyframes nameGlow {
+            0%, 100% { text-shadow: 4px 4px 0 var(--yellow), 8px 8px 0 rgba(253,230,138,0.4); }
+            50% { text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(251,207,232,0.55); }
+        }
+        .name-brutal { animation: nameGlow 4s ease-in-out infinite; }
+
+        /* 2. 贴纸果冻弹跳：鼠标滑过像果冻一样晃 */
+        @keyframes jelly {
+            0%, 100% { transform: scale(1,1) rotate(var(--r,0deg)); }
+            25% { transform: scale(0.92,1.08) rotate(var(--r,0deg)); }
+            50% { transform: scale(1.08,0.92) rotate(var(--r,0deg)); }
+            75% { transform: scale(0.96,1.04) rotate(var(--r,0deg)); }
+        }
+        .sticker:hover, .side-interest-tags span:hover, .badge:hover { animation: jelly 600ms ease; }
+
+        /* 3. 卡片磁吸上抬：所有卡片滑过时上浮+投影加深 */
+        .metric-card, .skill-card, .project-card, .info-card, .side-card, .contact-card, .tab-card {
+            transition: transform 300ms cubic-bezier(.2,.8,.3,1), box-shadow 300ms cubic-bezier(.2,.8,.3,1);
+        }
+        .metric-card:hover, .skill-card:hover, .project-card:hover, .info-card:hover, .side-card:hover, .contact-card:hover, .tab-card:hover {
+            transform: translateY(-6px) rotate(-0.5deg);
+            box-shadow: 8px 8px 0 0 var(--ink);
+        }
+
+        /* 4. 按钮按压回弹：点击有"按下去弹回来"手感 */
+        .btn, .icon-btn, .contact-card { transition: transform 150ms cubic-bezier(.34,1.56,.64,1), box-shadow 150ms ease; }
+        .btn:hover, .icon-btn:hover { transform: translateY(-3px); box-shadow: 6px 6px 0 0 var(--ink); }
+        .btn:active, .icon-btn:active, .contact-card:active { transform: translateY(2px) scale(0.97); box-shadow: 1px 1px 0 0 var(--ink); }
+
+        /* 5. 标题图标摇摆：📊💼🚀🛠️🎓✨📷✉️ 一直轻轻晃 */
+        @keyframes iconSwing {
+            0%, 100% { transform: rotate(-8deg); }
+            50% { transform: rotate(8deg); }
+        }
+        .section-title .title-icon { display: inline-block; animation: iconSwing 2.4s ease-in-out infinite; transform-origin: bottom center; }
+
+        /* 6. Hero头像缓慢旋转光环 + 滑过加速 */
+        .hero-photo { transition: transform 400ms cubic-bezier(.2,.8,.3,1); }
+        .hero-photo:hover { transform: rotate(3deg) scale(1.04); }
+
+        /* 7. 自拍照片滑过立正放大（原本有旋转，hover时回正） */
+        .bottom-photo { transition: transform 300ms cubic-bezier(.34,1.56,.64,1); }
+        .bottom-photo:hover { transform: rotate(0deg) scale(1.12) !important; z-index: 5; }
+
+        /* 8. 座右铭波浪字：每个字上下漂 */
+        @keyframes waveText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .hero-motto-text { display: inline-block; animation: waveText 2.5s ease-in-out infinite; }
+
+        /* 9. 导航链接下划线滑入 */
+        .nav-links a { position: relative; transition: color 200ms ease; }
+        .nav-links a::after {
+            content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 3px;
+            background: var(--ink); transition: width 250ms cubic-bezier(.2,.8,.3,1);
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* 10. 技能条持续流光（已在barShine，补强滑过暂停放大） */
+        .skill-card:hover .skill-bar-fill { filter: brightness(1.15); }
+
+        /* 11. 联系方式卡片依次浮现 + 滑过翻转 */
+        .contact-card { transition: transform 350ms cubic-bezier(.34,1.56,.64,1), background 250ms ease; }
+        .contact-card:hover { transform: translateY(-5px) rotate(1deg) scale(1.03); background: var(--yellow); }
+
+        /* 12. 返回顶部按钮一直轻弹跳提示可点 */
+        .back-top.show { animation: bounceInTop 400ms ease, floatA 3s ease-in-out 0.5s infinite; }
+
+        /* 13. tab 切换按钮滑过弹起 */
+        .tab-btn, .tab-list button { transition: transform 250ms cubic-bezier(.34,1.56,.64,1); }
+        .tab-btn:hover, .tab-list button:hover { transform: translateY(-3px); }
+
+        /* 14. 亮点数字滚动时放大强调 */
+        .stat-num, .metric-num { display: inline-block; transition: transform 300ms cubic-bezier(.34,1.56,.64,1); }
+        .metric-card:hover .stat-num, .metric-card:hover .metric-num { transform: scale(1.2); color: var(--purple); }
+
         @media print {
             body {
                 padding-top: 0;
@@ -1892,6 +1971,7 @@
             .section { animation: none !important; }
             .hero-photo { display: none; }
             .section { page-break-inside: avoid; }
+            .name-brutal, .title-icon, .hero-motto-text, .back-top, .float-deco { animation: none !important; }
         }
 
         /* 强制浅色：防止 iOS / 安卓浏览器开启深色模式时反色覆盖米黄Neo-Brutalism配色 */
@@ -3150,7 +3230,7 @@
 
             function setupProgressBar() {
                 const bar = $('#progressBar');
-                window.addEventListener('scroll', () => {
+                window.addEventListener('sacroll', () => {
                     const scrolled = window.scrollY;
                     const total = document.documentElement.scrollHeight - window.innerHeight;
                     const pct = total > 0 ? (scrolled / total) * 100 : 0;
