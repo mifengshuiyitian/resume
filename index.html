@@ -1835,6 +1835,38 @@
         }
 
         /* ========== 打印样式 ========== */
+        /* 无障碍：跳转主内容链接（默认隐藏，键盘Tab聚焦时可见） */
+        .skip-link {
+            position: absolute;
+            top: -60px;
+            left: 16px;
+            background: var(--ink);
+            color: var(--bg);
+            padding: 10px 18px;
+            font-weight: 900;
+            border: 3px solid var(--ink);
+            z-index: 10000;
+            text-decoration: none;
+            transition: top 200ms ease;
+        }
+        .skip-link:focus {
+            top: 8px;
+            color: var(--yellow);
+        }
+
+        /* 纯CSS轻量入场动画（不依赖JS observer，安卓微信100%安全播完即静止） */
+        @keyframes cssFadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section { animation: cssFadeUp 600ms cubic-bezier(.2,.8,.3,1) both; }
+        .section:nth-of-type(2) { animation-delay: 60ms; }
+        .section:nth-of-type(3) { animation-delay: 120ms; }
+        .section:nth-of-type(4) { animation-delay: 180ms; }
+        .section:nth-of-type(5) { animation-delay: 240ms; }
+        .section:nth-of-type(6) { animation-delay: 300ms; }
+        .section:nth-of-type(7) { animation-delay: 360ms; }
+
         @media print {
             body {
                 padding-top: 0;
@@ -1843,7 +1875,8 @@
                 font-size: 12px;
                 background-image: none;
             }
-            .navbar, .back-top, .toast, .hero-actions, .icon-btn, .nav-actions, .float-deco, .hero-side, .marquee, .section-divider, .scroll-hint {
+            .navbar, .back-top, .toast, .hero-actions, .icon-btn, .nav-actions, .float-deco, .hero-side, .marquee, .section-divider, .scroll-hint,
+            .hero-bottom-photos, .travel-grid, .hero-star, .skip-link, .progress-bar, .lightbox, .hero-motto-banner, .sticker-container, .douyin-clickable {
                 display: none !important;
             }
             .hero, .metric-card, .tabs, .project-card, .skill-card, .info-card, .self-eval {
@@ -1856,6 +1889,9 @@
             .tab-list { display: none; }
             .name-brutal { -webkit-text-stroke: 0; text-shadow: none; }
             .reveal, .reveal-stagger > *, .reveal-left, .reveal-right, .reveal-scale, .reveal-clip { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+            .section { animation: none !important; }
+            .hero-photo { display: none; }
+            .section { page-break-inside: avoid; }
         }
 
         /* 强制浅色：防止 iOS / 安卓浏览器开启深色模式时反色覆盖米黄Neo-Brutalism配色 */
@@ -2348,29 +2384,29 @@
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container" id="mainContent">
         <!-- ========== Hero 区域 ========== -->
         <section class="hero" id="about">
             <span class="hero-star s1">★</span>
             <span class="hero-star s2">●</span>
             <div class="hero-inner">
                 <div class="hero-photo" id="heroPhoto">
-                    <img src="https://mifengshuiyitian.github.io/resume/avatar.jpg" alt="个人照片" id="heroPhotoImg"
+                    <img src="https://mifengshuiyitian.github.io/resume/avatar.jpg" alt="王宫茗个人证件照" width="200" height="200" id="heroPhotoImg"
                          onerror="this.parentElement.innerHTML='<div class=\'hero-photo-fallback\'>王</div>'">
                 </div>
                 <div class="hero-content">
                     <div class="hero-bottom-photos">
                         <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie1.jpg">
-                            <img src="https://mifengshuiyitian.github.io/resume/selfie1.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--pink);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                            <img src="https://mifengshuiyitian.github.io/resume/selfie1.jpg" alt="王宫茗生活照·户外场景" width="95" height="95" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--pink);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                         <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie2.jpg">
-                            <img src="https://mifengshuiyitian.github.io/resume/selfie2.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                            <img src="https://mifengshuiyitian.github.io/resume/selfie2.jpg" alt="王宫茗生活照·旅行留影" width="95" height="95" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                         <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie3.jpg">
-                            <img src="https://mifengshuiyitian.github.io/resume/selfie3.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--yellow);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                            <img src="https://mifengshuiyitian.github.io/resume/selfie3.jpg" alt="王宫茗生活照·校园日常" width="95" height="95" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--yellow);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                         <div class="bottom-photo" data-src="https://mifengshuiyitian.github.io/resume/selfie4.jpg">
-                            <img src="https://mifengshuiyitian.github.io/resume/selfie4.jpg" alt="自拍" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
+                            <img src="https://mifengshuiyitian.github.io/resume/selfie4.jpg" alt="王宫茗生活照·兴趣爱好" width="95" height="95" loading="lazy" onerror="this.style.visibility='hidden';this.insertAdjacentHTML('afterend','<div style=\'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue);color:var(--ink);font-weight:900;border:3px solid var(--ink)\'>📷</div>')">
                         </div>
                     </div>
                     <div class="hero-name-block">
@@ -2659,6 +2695,7 @@
                 }],
                 projects: [
                     { tab: '校园项目', items: [
+                        { name: 'AI辅助班级事务提效实践', role: '发起人/实践者 ｜ 2025.09 – 2026.06', desc: '将AI工具落地到班级日常管理与学习场景：用AI辅助撰写活动方案与演讲稿初稿、快速整理会议纪要、生成成绩统计表格与学习资料，独立完成提示词设计与结果校对。实践后方案撰写效率提升约60%，会议纪要整理时间缩短一半，形成可复用的班级AI应用小流程。', tags: ['AI应用', '效率提升', '流程优化'], result: '方案效率提升60%', img: '' },
                         { name: '大型活动策划与执行', role: '策划人/负责人 ｜ 2024.09 – 2026.06', desc: '主导策划并执行校级、年级大型活动（迎新晚会、运动会开幕式、文艺汇演等），累计策划活动8+场，参与人数500+，活动好评率95%以上。擅长从零到一统筹活动全流程，包括方案设计、预算控制、人员调度、现场执行与应急处理，多次获评"最佳组织奖"。', tags: ['活动策划', '统筹执行', '团队管理'], result: '策划8+场 好评率95%+', img: '' },
                         { name: '班级文化建设与凝聚力提升项目', role: '负责人 ｜ 2025.03 – 2025.12', desc: '策划班级文化墙、班徽设计及班级口号征集活动，全班参与率100%。统筹跨小组协作，项目提前1周完成。', tags: ['活动策划', '跨组协作', '文化建设'], result: '年级评比第1名', img: '' },
                         { name: '法治主题演讲活动', role: '演讲者/组织成员 ｜ 2025.09 – 2025.11', desc: '参与校级法治主题演讲，独立完成稿件撰写、素材收集与现场演讲，覆盖听众200+人，获评"优秀演讲者"。', tags: ['公开演讲', '内容创作', '活动组织'], result: '覆盖听众200+人', img: '' },
